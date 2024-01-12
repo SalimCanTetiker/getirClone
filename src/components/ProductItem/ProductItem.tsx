@@ -1,21 +1,26 @@
 import { View, Text, Pressable, Image } from 'react-native'
 import React from 'react'
 
+import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Product } from '../../models/Models'
 
 import styles from './ProductItem.style'
 
 type producItemType = {
-  item:Product;
+  item: Product;
 }
 
-const PeoductItem = ({item}:producItemType) => {
+const PeoductItem = ({ item }: producItemType) => {
+
+  const navigation = useNavigation()
+
   return (
-    <Pressable style={styles.container}>
+    <Pressable onPress={() => navigation.navigate('ProductDetail', {product:item})}
+      style={styles.container}>
       <Image
         style={styles.image}
-        source={{ uri: item.image}}
+        source={{ uri: item.image }}
       />
       <View style={styles.viewContainer}>
         <Text

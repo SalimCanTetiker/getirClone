@@ -9,7 +9,7 @@ import Product from '../../components/Products/Products'
 const CategoryDetail = (props) => {
   const [category,setCategory] = useState(props.route.params.category)
   return (
-    <ScrollView>
+    <ScrollView stickyHeaderIndices={[0]}>
       <CategoryFilter category={category} />
       <TypeFilter />
       <Product/>
